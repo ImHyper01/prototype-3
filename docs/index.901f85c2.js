@@ -527,6 +527,8 @@ var _wolkenJpg = require("./images/wolken.jpg");
 var _wolkenJpgDefault = parcelHelpers.interopDefault(_wolkenJpg);
 var _laserPng = require("./images/laser.png");
 var _laserPngDefault = parcelHelpers.interopDefault(_laserPng);
+var _blasterMp3 = require("url:./sounds/blaster.mp3");
+var _blasterMp3Default = parcelHelpers.interopDefault(_blasterMp3);
 var _bom = require("./bom");
 var _plane = require("./plane");
 var _laser = require("./laser");
@@ -541,7 +543,7 @@ class game {
         const pixiCanvas = document.getElementById("pixi-canvas");
         if (pixiCanvas != null) pixiCanvas.appendChild(this.pixi.view);
         this.loader = new _pixiJs.Loader();
-        this.loader.add('bomTexture', _bomPngDefault.default).add('planeTexture', _planePngDefault.default).add('cloudTexture', _wolkenJpgDefault.default).add('laserTexture', _laserPngDefault.default);
+        this.loader.add('bomTexture', _bomPngDefault.default).add('planeTexture', _planePngDefault.default).add('cloudTexture', _wolkenJpgDefault.default).add('laserTexture', _laserPngDefault.default).add('laserSound', _blasterMp3Default.default);
         this.loader.load(()=>this.loadCompleted()
         );
     }
@@ -556,6 +558,7 @@ class game {
         }
         this.plane = new _plane.Plane(this.loader.resources["planeTexture"].texture, this);
         this.pixi.stage.addChild(this.plane);
+        this.laserSound = this.loader.resources["laserSound"].data;
         this.pixi.ticker.add(()=>this.update()
         );
     }
@@ -570,6 +573,7 @@ class game {
         console.log("shoot");
         let b = new _laser.Laser(this.loader.resources["laserTexture"].texture, this, x, y);
         this.laser.push(b);
+        this.laserSound.play();
         this.pixi.stage.addChild(b);
     }
     removeBullet(laser) {
@@ -594,7 +598,7 @@ class game {
 }
 new game();
 
-},{"pixi.js":"dsYej","./images/bom.png":"7ua4X","./images/plane.png":"5sI41","./images/wolken.jpg":"hO0sz","./plane":"fpgx3","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./images/laser.png":"h3VaZ","./bom":"amdkO","./laser":"jafZd"}],"dsYej":[function(require,module,exports) {
+},{"pixi.js":"dsYej","./images/bom.png":"7ua4X","./images/plane.png":"5sI41","./images/wolken.jpg":"hO0sz","./plane":"fpgx3","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./images/laser.png":"h3VaZ","./bom":"amdkO","./laser":"jafZd","url:./sounds/blaster.mp3":"eIirg"}],"dsYej":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "utils", ()=>_utils
@@ -37259,6 +37263,9 @@ class Laser extends _pixiJs.Sprite {
     }
 }
 
-},{"pixi.js":"dsYej","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./game":"edeGs"}]},["fpRtI","edeGs"], "edeGs", "parcelRequirea0e5")
+},{"pixi.js":"dsYej","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./game":"edeGs"}],"eIirg":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('emE5o') + "blaster.eef4b5e5.mp3" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}]},["fpRtI","edeGs"], "edeGs", "parcelRequirea0e5")
 
 //# sourceMappingURL=index.901f85c2.js.map
