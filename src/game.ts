@@ -1,9 +1,12 @@
 import * as PIXI from 'pixi.js'
+
 import bomImage from "./images/bom.png"
 import planeImage from "./images/plane.png"
 import cloudImage from "./images/wolken.jpg"
 import laserImage from "./images/laser.png"
 import laserSound from "url:./sounds/blaster.mp3"
+
+import { Score } from './score'
 import { Bom } from "./bom"
 import { Plane } from "./plane"
 import { Laser } from './laser'
