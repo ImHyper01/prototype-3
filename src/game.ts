@@ -6,7 +6,6 @@ import cloudImage from "./images/wolken.jpg"
 import laserImage from "./images/laser.png"
 import laserSound from "url:./sounds/blaster.mp3"
 
-import { Score } from './score'
 import { Bom } from "./bom"
 import { Plane } from "./plane"
 import { Laser } from './laser'
@@ -56,6 +55,7 @@ loadCompleted(){
     this.pixi.stage.addChild(this.plane)
 
     this.laserSound = this.loader.resources["laserSound"].data
+
 
     this.pixi.ticker.add(() => this.update())
 }

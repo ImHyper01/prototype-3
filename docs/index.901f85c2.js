@@ -529,6 +529,7 @@ var _laserPng = require("./images/laser.png");
 var _laserPngDefault = parcelHelpers.interopDefault(_laserPng);
 var _blasterMp3 = require("url:./sounds/blaster.mp3");
 var _blasterMp3Default = parcelHelpers.interopDefault(_blasterMp3);
+var _score = require("./score");
 var _bom = require("./bom");
 var _plane = require("./plane");
 var _laser = require("./laser");
@@ -559,6 +560,7 @@ class game {
         this.plane = new _plane.Plane(this.loader.resources["planeTexture"].texture, this);
         this.pixi.stage.addChild(this.plane);
         this.laserSound = this.loader.resources["laserSound"].data;
+        this.score = new _score.Score(this);
         this.pixi.ticker.add(()=>this.update()
         );
     }
@@ -598,7 +600,7 @@ class game {
 }
 new game();
 
-},{"pixi.js":"dsYej","./images/bom.png":"7ua4X","./images/plane.png":"5sI41","./images/wolken.jpg":"hO0sz","./plane":"fpgx3","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./images/laser.png":"h3VaZ","./bom":"amdkO","./laser":"jafZd","url:./sounds/blaster.mp3":"eIirg"}],"dsYej":[function(require,module,exports) {
+},{"pixi.js":"dsYej","./images/bom.png":"7ua4X","./images/plane.png":"5sI41","./images/wolken.jpg":"hO0sz","./plane":"fpgx3","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./images/laser.png":"h3VaZ","./bom":"amdkO","./laser":"jafZd","url:./sounds/blaster.mp3":"eIirg","./score":"fE8P1"}],"dsYej":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "utils", ()=>_utils
@@ -37266,6 +37268,36 @@ class Laser extends _pixiJs.Sprite {
 },{"pixi.js":"dsYej","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./game":"edeGs"}],"eIirg":[function(require,module,exports) {
 module.exports = require('./helpers/bundle-url').getBundleURL('emE5o') + "blaster.eef4b5e5.mp3" + "?" + Date.now();
 
-},{"./helpers/bundle-url":"lgJ39"}]},["fpRtI","edeGs"], "edeGs", "parcelRequirea0e5")
+},{"./helpers/bundle-url":"lgJ39"}],"fE8P1":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Score", ()=>Score
+);
+var _pixiJs = require("pixi.js");
+var _game = require("./game");
+class Score {
+    score = 0;
+    constructor(game){
+        this.game = game;
+        const style = new _pixiJs.TextStyle({
+            fontFamily: 'ArcadeFont',
+            fontSize: 40,
+            fontWeight: 'bold',
+            fill: [
+                '#fffffff'
+            ]
+        });
+        this.scoreField = new _pixiJs.Text('Score : 0', style);
+        this.scoreField.x = 20;
+        this.scoreField.y = 20;
+        this.pixi.stage.addChild(this.scoreField);
+    }
+    updateScore(s) {
+        this.score += s;
+        this.scoreField.text = `Score : ${this.score}`;
+    }
+}
+
+},{"pixi.js":"dsYej","./game":"edeGs","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["fpRtI","edeGs"], "edeGs", "parcelRequirea0e5")
 
 //# sourceMappingURL=index.901f85c2.js.map
