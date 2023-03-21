@@ -9,6 +9,7 @@ import laserSound from "url:./sounds/blaster.mp3"
 import { Bom } from "./bom"
 import { Plane } from "./plane"
 import { Laser } from './laser'
+import { UI } from './UI'
 
 export class game {
     pixi : PIXI.Application
