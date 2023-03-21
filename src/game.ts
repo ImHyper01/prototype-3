@@ -19,6 +19,7 @@ export class game {
     container: any
     assetLoader: any
     laserSound: HTMLAudioElement
+    
 
 
 constructor(){
@@ -93,12 +94,14 @@ removeBullet(laser: Laser) {
 }
 
 
+
 checkCollision(){
     for(let laser of this.laser){
         for(let bom of this.bom){
             if(this.collision(laser, bom)){
                 this.removeBullet(laser)
                 bom.resetPosition()
+                
                 break
             }
         }
