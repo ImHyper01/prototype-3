@@ -22,6 +22,11 @@ export class UI {
         this.scoreField.y = 20
 
         
-        this.game.container.addChild(this.scoreField)
+        this.game.pixi.stage.addChild(this.scoreField)
+    }
+
+    addScore(n:number){
+        this.score += n
+        this.scoreField.text = `Score : ${this.score}`
     }
 }

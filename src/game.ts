@@ -12,14 +12,14 @@ import { Laser } from './laser'
 import { UI } from './UI'
 
 export class game {
-    pixi : PIXI.Application
-    loader : PIXI.Loader
-    bom : Bom []=[]
-    plane : Plane
-    laser : Laser [] = []
-    container: any
-    assetLoader: any
-    laserSound: HTMLAudioElement
+   public pixi : PIXI.Application
+   private loader : PIXI.Loader
+   private bom : Bom []=[]
+   private plane : Plane
+   private laser : Laser [] = []
+    private assetLoader: any
+    private laserSound: HTMLAudioElement
+    private ui : UI
     
 
 
@@ -58,6 +58,7 @@ loadCompleted(){
 
     this.laserSound = this.loader.resources["laserSound"].data
 
+    this.ui = new UI(this)
 
     this.pixi.ticker.add(() => this.update())
 }
@@ -102,7 +103,7 @@ checkCollision(){
             if(this.collision(laser, bom)){
                 this.removeBullet(laser)
                 bom.resetPosition()
-                
+                this.ui.addScore(10)
                 break
             }
         }

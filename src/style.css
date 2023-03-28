@@ -1,3 +1,8 @@
+@font-face {
+    font-family: ArcadeFont;
+    src: url(arcade.ttf);
+  }
+
 body {
     background-color: rgb(27, 25, 45);
     margin: 0;

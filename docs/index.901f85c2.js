@@ -532,6 +532,7 @@ var _blasterMp3Default = parcelHelpers.interopDefault(_blasterMp3);
 var _bom = require("./bom");
 var _plane = require("./plane");
 var _laser = require("./laser");
+var _ui = require("./UI");
 class game {
     bom = [];
     laser = [];
@@ -559,6 +560,7 @@ class game {
         this.plane = new _plane.Plane(this.loader.resources["planeTexture"].texture, this);
         this.pixi.stage.addChild(this.plane);
         this.laserSound = this.loader.resources["laserSound"].data;
+        this.ui = new _ui.UI(this);
         this.pixi.ticker.add(()=>this.update()
         );
     }
@@ -586,6 +588,7 @@ class game {
             for (let bom of this.bom)if (this.collision(laser, bom)) {
                 this.removeBullet(laser);
                 bom.resetPosition();
+                this.ui.addScore(10);
                 break;
             }
         }
@@ -598,7 +601,7 @@ class game {
 }
 new game();
 
-},{"pixi.js":"dsYej","./images/bom.png":"7ua4X","./images/plane.png":"5sI41","./images/wolken.jpg":"hO0sz","./images/laser.png":"h3VaZ","url:./sounds/blaster.mp3":"eIirg","./bom":"amdkO","./plane":"fpgx3","./laser":"jafZd","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dsYej":[function(require,module,exports) {
+},{"pixi.js":"dsYej","./images/bom.png":"7ua4X","./images/plane.png":"5sI41","./images/wolken.jpg":"hO0sz","./images/laser.png":"h3VaZ","url:./sounds/blaster.mp3":"eIirg","./bom":"amdkO","./plane":"fpgx3","./laser":"jafZd","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./UI":"ef7dT"}],"dsYej":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "utils", ()=>_utils
@@ -37263,6 +37266,36 @@ class Laser extends _pixiJs.Sprite {
     update() {
         this.x += 10;
         if (this.x > 1700) this.game.removeBullet(this);
+    }
+}
+
+},{"pixi.js":"dsYej","./game":"edeGs","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ef7dT":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "UI", ()=>UI
+);
+var _pixiJs = require("pixi.js");
+var _game = require("./game");
+class UI {
+    score = 0;
+    constructor(game){
+        this.game = game;
+        const style = new _pixiJs.TextStyle({
+            fontFamily: 'ArcadeFont',
+            fontSize: 40,
+            fontWeight: 'bold',
+            fill: [
+                '#ffffff'
+            ]
+        });
+        this.scoreField = new _pixiJs.Text('Score : 0', style);
+        this.scoreField.x = 20;
+        this.scoreField.y = 20;
+        this.game.pixi.stage.addChild(this.scoreField);
+    }
+    addScore(n) {
+        this.score += n;
+        this.scoreField.text = `Score : ${this.score}`;
     }
 }
 
