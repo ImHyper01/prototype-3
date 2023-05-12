@@ -601,7 +601,7 @@ class game {
 }
 new game();
 
-},{"pixi.js":"dsYej","./images/bom.png":"7ua4X","./images/plane.png":"5sI41","./images/wolken.jpg":"hO0sz","./images/laser.png":"h3VaZ","url:./sounds/blaster.mp3":"eIirg","./bom":"amdkO","./plane":"fpgx3","./laser":"jafZd","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./UI":"ef7dT"}],"dsYej":[function(require,module,exports) {
+},{"pixi.js":"dsYej","./images/bom.png":"7ua4X","./images/plane.png":"5sI41","./images/wolken.jpg":"hO0sz","./images/laser.png":"h3VaZ","url:./sounds/blaster.mp3":"eIirg","./bom":"amdkO","./plane":"fpgx3","./laser":"jafZd","./UI":"ef7dT","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dsYej":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "utils", ()=>_utils
